@@ -20,13 +20,14 @@ public abstract class FireBlockMixin extends BlockMixin {
 
     @Inject(method = "trySpreadingFire", at = @At("RETURN"), cancellable = true)
     protected void fireSpread(World world, BlockPos pos, int spreadFactor, Random random, int currentAge, CallbackInfo ci) {
+        if (!world.isClient()) {
+            ServerShipWorld serverShipWorld = (ServerShipWorld) ValkyrienSkiesMod.getVsCore().getHooks().getCurrentShipServerWorld();
+            DimensionIdProvider provider = (DimensionIdProvider) world;
 
-        ServerShipWorld serverShipWorld = (ServerShipWorld) ValkyrienSkiesMod.getVsCore().getHooks().getCurrentShipServerWorld();
-        DimensionIdProvider provider = (DimensionIdProvider) world;
-
-        if (!world.isClient() && serverShipWorld.isBlockInShipyard(pos.getX(),pos.getY(),pos.getZ(),provider.getDimensionId())) {
-            if (world.getBlockState(pos).isAir()) {
-                BlockHandler.updateNeighbors(world,pos);
+            if (serverShipWorld != null && serverShipWorld.isBlockInShipyard(pos.getX(), pos.getY(), pos.getZ(), provider.getDimensionId())) {
+                if (world.getBlockState(pos).isAir()) {
+                    BlockHandler.updateNeighbors(world, pos);
+                }
             }
         }
     }
