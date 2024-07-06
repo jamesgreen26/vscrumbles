@@ -1,6 +1,6 @@
 package net.g_mungus.vscrumbles.mixin;
 
-import net.g_mungus.vscrumbles.BlockHandler;
+import net.g_mungus.vscrumbles.util.CrumbleChecker;
 import net.minecraft.block.*;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.random.Random;
@@ -26,7 +26,7 @@ public abstract class FireBlockMixin extends BlockMixin {
 
             if (serverShipWorld != null && serverShipWorld.isBlockInShipyard(pos.getX(), pos.getY(), pos.getZ(), provider.getDimensionId())) {
                 if (world.getBlockState(pos).isAir()) {
-                    BlockHandler.updateNeighbors(world, pos);
+                    CrumbleChecker checker = new CrumbleChecker(world, pos);
                 }
             }
         }

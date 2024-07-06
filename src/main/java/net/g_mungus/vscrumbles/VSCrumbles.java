@@ -7,7 +7,8 @@ import java.util.logging.Logger;
 
 public class VSCrumbles implements ModInitializer {
     public static final String MOD_ID = "vscrumbles";
-    public static final String MOD_NAME = "Block Physics";
+    public static final String MOD_NAME = "VS - Crumbles";
+    public static final int MAX_BLOCKS = 5;
 
 
     @Override

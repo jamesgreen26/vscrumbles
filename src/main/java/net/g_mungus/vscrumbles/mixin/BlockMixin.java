@@ -1,9 +1,7 @@
 package net.g_mungus.vscrumbles.mixin;
 
-import net.g_mungus.vscrumbles.BlockHandler;
+import net.g_mungus.vscrumbles.util.CrumbleChecker;
 import net.minecraft.block.*;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldAccess;
@@ -27,19 +25,7 @@ public abstract class BlockMixin {
             DimensionIdProvider provider = (DimensionIdProvider) world;
 
             if (serverShipWorld != null && serverShipWorld.isBlockInShipyard(pos.getX(), pos.getY(), pos.getZ(), provider.getDimensionId())) {
-                BlockHandler.updateNeighbors((World) world, pos);
-            }
-        }
-    }
-
-    @Inject(method = "onPlaced", at = @At("RETURN"), cancellable = true)
-    protected void blockPlaced(World world, BlockPos pos, BlockState state, LivingEntity placer, ItemStack itemStack, CallbackInfo ci) {
-        if (!world.isClient()) {
-            ServerShipWorld serverShipWorld = (ServerShipWorld) ValkyrienSkiesMod.getVsCore().getHooks().getCurrentShipServerWorld();
-            DimensionIdProvider provider = (DimensionIdProvider) world;
-            if (serverShipWorld != null && serverShipWorld.isBlockInShipyard(pos.getX(), pos.getY(), pos.getZ(), provider.getDimensionId())) {
-                BlockHandler.update(world, pos);
-                BlockHandler.updateNeighbors(world, pos);
+                CrumbleChecker checker = new CrumbleChecker((World) world, pos);
             }
         }
     }
@@ -50,7 +36,7 @@ public abstract class BlockMixin {
             ServerShipWorld serverShipWorld = (ServerShipWorld) ValkyrienSkiesMod.getVsCore().getHooks().getCurrentShipServerWorld();
             DimensionIdProvider provider = (DimensionIdProvider) world;
             if (serverShipWorld != null && serverShipWorld.isBlockInShipyard(pos.getX(), pos.getY(), pos.getZ(), provider.getDimensionId())) {
-                BlockHandler.updateNeighbors(world, pos);
+                CrumbleChecker checker = new CrumbleChecker(world, pos);
             }
         }
     }
