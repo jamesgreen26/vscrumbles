@@ -32,11 +32,9 @@ public class BlockScan {
         LinkedList<BlockPos> blocksToAdd = new LinkedList<>();
 
 
-        if (currentSize > MAX_BLOCKS) {
+        if (currentSize > CONFIG.maxBlocks()) {
             return new LinkedList<>();
         }
-
-
 
 
         for (int a = -1; a <= 1; a++) {
@@ -51,7 +49,7 @@ public class BlockScan {
                             currentSize++;
 
                             blocksToAdd.addAll(scanRec(world, block));
-                            if (currentSize > MAX_BLOCKS) {
+                            if (currentSize > CONFIG.maxBlocks()) {
                                 return new LinkedList<>();
                             }
                         }
