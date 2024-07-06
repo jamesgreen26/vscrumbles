@@ -1,19 +1,14 @@
 package net.g_mungus.vscrumbles.util;
 
-import net.minecraft.block.BlockState;
-import net.minecraft.client.MinecraftClient;
-import net.minecraft.text.Text;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
 import java.util.LinkedList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
 
 import static net.g_mungus.vscrumbles.VSCrumbles.*;
 
 public class BlockScan {
-    private BlockPos root;
     private LinkedList<BlockPos> blocks;
     private LinkedList<BlockPos> checked;
     private int currentSize;
@@ -21,7 +16,6 @@ public class BlockScan {
     public BlockScan(World world, BlockPos root) {
         blocks = new LinkedList<>();
         checked = new LinkedList<>();
-        this.root = root;
         currentSize = 0;
 
         blocks.addAll(scanRec(world, root));

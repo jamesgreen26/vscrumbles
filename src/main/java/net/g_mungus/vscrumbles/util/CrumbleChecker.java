@@ -1,7 +1,6 @@
 package net.g_mungus.vscrumbles.util;
 
-import net.minecraft.client.MinecraftClient;
-import net.minecraft.text.Text;
+
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
@@ -35,9 +34,9 @@ public class CrumbleChecker {
                 }
             }
         }
-        for(BlockPos block : blocksToCrumble) {
-            breakOff(world,block);
-        }
+
+        breakOff(world,blocksToCrumble);
+
     }
 
 
