@@ -16,7 +16,13 @@
 	"environment": "*",
 	"entrypoints": {
 		"main": [
-			"net.fenrir.blockphysics.BlockPhysics"
+	"net.fenrir.blockphysics.BlockPhysics"
+	],
+		"fabric-datagen": [
+			{
+				"value": "net.fenrir.blockphysics.BlockphysicsDataGenerator",
+				"adapter": "kotlin"
+			}
 		]
 	},
 	"mixins": [
