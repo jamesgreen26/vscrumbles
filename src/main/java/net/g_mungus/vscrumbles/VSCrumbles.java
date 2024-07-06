@@ -1,12 +1,12 @@
-package net.fenrir.blockphysics;
+package net.g_mungus.vscrumbles;
 
 import net.fabricmc.api.ModInitializer;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class BlockPhysics implements ModInitializer {
-    public static final String MOD_ID = "blockphysics";
+public class VSCrumbles implements ModInitializer {
+    public static final String MOD_ID = "vscrumbles";
     public static final String MOD_NAME = "Block Physics";
 
 

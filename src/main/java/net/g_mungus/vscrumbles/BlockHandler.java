@@ -1,4 +1,4 @@
-package net.fenrir.blockphysics;
+package net.g_mungus.vscrumbles;
 
 import net.minecraft.block.*;
 import net.minecraft.entity.FallingBlockEntity;

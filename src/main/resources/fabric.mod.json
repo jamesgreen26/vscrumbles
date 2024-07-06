@@ -1,26 +1,26 @@
 {
 	"schemaVersion": 1,
-	"id": "blockphysics",
+	"id": "vscrumbles",
 	"version": "${version}",
-	"name": "blockphysics",
-	"description": "YO THIS IS ACTUALLY SO HYPE",
+	"name": "VS - Crumbles",
+	"description": "Detached bits of your ship will now fall off.",
 	"authors": [
-		"Me!"
+		"G_Mungus"
 	],
 	"contact": {
 		"homepage": "https://fabricmc.net/",
 		"sources": "https://github.com/FabricMC/fabric-example-mod"
 	},
 	"license": "CC0-1.0",
-	"icon": "assets/blockphysics/icon.png",
+	"icon": "assets/vscrumbles/icon.png",
 	"environment": "*",
 	"entrypoints": {
 		"main": [
-			"net.fenrir.blockphysics.BlockPhysics"
+			"net.g_mungus.vscrumbles.VSCrumbles"
 		]
 	},
 	"mixins": [
-		"blockphysics.mixins.json"
+		"vscrumbles.mixins.json"
 	],
 	"depends": {
 		"fabricloader": ">=0.15.11",

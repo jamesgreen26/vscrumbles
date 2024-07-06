@@ -1,6 +1,6 @@
-package net.fenrir.blockphysics.mixin;
+package net.g_mungus.vscrumbles.mixin;
 
-import net.fenrir.blockphysics.BlockHandler;
+import net.g_mungus.vscrumbles.BlockHandler;
 import net.minecraft.block.*;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.item.ItemStack;
