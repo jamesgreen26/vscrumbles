@@ -11,6 +11,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.valkyrienskies.core.api.world.ServerShipWorld;
+import org.valkyrienskies.mod.common.VSGameUtilsKt;
 import org.valkyrienskies.mod.common.ValkyrienSkiesMod;
 import org.valkyrienskies.mod.common.util.DimensionIdProvider;
 
@@ -21,10 +22,7 @@ public abstract class BlockMixin {
     protected void blockBroken(WorldAccess world, BlockPos pos, BlockState state, CallbackInfo ci) {
 
         if (!world.isClient()) {
-            ServerShipWorld serverShipWorld = (ServerShipWorld) ValkyrienSkiesMod.getVsCore().getHooks().getCurrentShipServerWorld();
-            DimensionIdProvider provider = (DimensionIdProvider) world;
-
-            if (serverShipWorld != null && serverShipWorld.isBlockInShipyard(pos.getX(), pos.getY(), pos.getZ(), provider.getDimensionId())) {
+            if (VSGameUtilsKt.isBlockInShipyard((World) world, pos)) {
                 CrumbleChecker checker = new CrumbleChecker((World) world, pos);
             }
         }
@@ -35,7 +33,7 @@ public abstract class BlockMixin {
         if (!world.isClient()) {
             ServerShipWorld serverShipWorld = (ServerShipWorld) ValkyrienSkiesMod.getVsCore().getHooks().getCurrentShipServerWorld();
             DimensionIdProvider provider = (DimensionIdProvider) world;
-            if (serverShipWorld != null && serverShipWorld.isBlockInShipyard(pos.getX(), pos.getY(), pos.getZ(), provider.getDimensionId())) {
+            if (VSGameUtilsKt.isBlockInShipyard((World) world, pos)) {
                 CrumbleChecker checker = new CrumbleChecker(world, pos);
             }
         }
