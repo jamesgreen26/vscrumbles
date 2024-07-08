@@ -14,6 +14,8 @@ public class VSCrumblesConfig extends ConfigWrapper<net.g_mungus.vscrumbles.conf
     public final Keys keys = new Keys();
 
     private final Option<java.lang.Integer> maxBlocks = this.optionForKey(this.keys.maxBlocks);
+    private final Option<java.lang.Integer> maxBlocksSpecial = this.optionForKey(this.keys.maxBlocksSpecial);
+    private final Option<java.util.List<java.lang.String>> specialBlocks = this.optionForKey(this.keys.specialBlocks);
 
     private VSCrumblesConfig() {
         super(net.g_mungus.vscrumbles.config.ConfigModel.class);
@@ -43,9 +45,27 @@ public class VSCrumblesConfig extends ConfigWrapper<net.g_mungus.vscrumbles.conf
         maxBlocks.set(value);
     }
 
+    public int maxBlocksSpecial() {
+        return maxBlocksSpecial.value();
+    }
+
+    public void maxBlocksSpecial(int value) {
+        maxBlocksSpecial.set(value);
+    }
+
+    public java.util.List<java.lang.String> specialBlocks() {
+        return specialBlocks.value();
+    }
+
+    public void specialBlocks(java.util.List<java.lang.String> value) {
+        specialBlocks.set(value);
+    }
+
 
     public static class Keys {
         public final Option.Key maxBlocks = new Option.Key("maxBlocks");
+        public final Option.Key maxBlocksSpecial = new Option.Key("maxBlocksSpecial");
+        public final Option.Key specialBlocks = new Option.Key("specialBlocks");
     }
 }
 

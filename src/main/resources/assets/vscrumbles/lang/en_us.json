@@ -1,4 +1,6 @@
 {
   "text.config.vscrumbles-config.title" : "VS - Crumbles Config",
-  "text.config.vscrumbles-config.option.maxBlocks" : "Max Blocks to Crumble"
+  "text.config.vscrumbles-config.option.maxBlocks" : "Max Blocks to Crumble",
+  "text.config.vscrumbles-config.option.maxBlocksSpecial" : "Max Blocks to Crumble with Protected Block",
+  "text.config.vscrumbles-config.option.specialBlocks" : "Protected Blocks"
 }

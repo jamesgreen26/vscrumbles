@@ -1,10 +1,10 @@
 package net.g_mungus.vscrumbles.util;
 
+import net.g_mungus.vscrumbles.VSCrumbles;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
 import java.util.LinkedList;
-
 
 import static net.g_mungus.vscrumbles.VSCrumbles.*;
 
@@ -12,6 +12,7 @@ public class BlockScan {
     private LinkedList<BlockPos> blocks;
     private LinkedList<BlockPos> checked;
     private int currentSize;
+    private boolean specialBlockPresent;
 
     public BlockScan(World world, BlockPos root) {
         blocks = new LinkedList<>();
@@ -43,6 +44,13 @@ public class BlockScan {
                     if (a != 0 || b != 0 || c != 0) {
                         BlockPos block = previous.north(a).east(b).up(c);
                         if (!world.getBlockState(block).isAir() && !checked.contains(block)) {
+
+                            if(!specialBlockPresent){
+                                if (getSpecialBlocks().contains(world.getBlockState(block).getBlock())) {
+                                    specialBlockPresent = true;
+                                    currentSize += (CONFIG.maxBlocks() - CONFIG.maxBlocksSpecial());
+                                }
+                            }
 
                             blocksToAdd.add(block);
                             checked.add(block);
