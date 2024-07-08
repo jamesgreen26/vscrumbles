@@ -13,11 +13,15 @@ public class Crumble {
     public static void breakOff(World world, List<BlockPos> blocks) {
         for (BlockPos pos : blocks) {
             BlockState state = world.getBlockState(pos);
-            FallingBlockEntity fallingBlockEntity = FallingBlockEntity.spawnFromBlock(world, pos, state);
-            fallingBlockEntity.timeFalling = 1;
-            fallingBlockEntity.setHurtEntities(5.0f, 5);
-            world.setBlockState(pos, Blocks.AIR.getDefaultState());
-            world.spawnEntity(fallingBlockEntity);
+            if (state.getBlock() instanceof ShulkerBoxBlock) {
+                world.breakBlock(pos, true);
+            } else {
+                FallingBlockEntity fallingBlockEntity = FallingBlockEntity.spawnFromBlock(world, pos, state);
+                fallingBlockEntity.timeFalling = 1;
+                fallingBlockEntity.setHurtEntities(5.0f, 5);
+                world.setBlockState(pos, Blocks.AIR.getDefaultState());
+                world.spawnEntity(fallingBlockEntity);
+            }
         }
     }
 }
