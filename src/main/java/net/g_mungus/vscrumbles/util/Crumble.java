@@ -20,7 +20,6 @@ public class Crumble {
                 fallingBlockEntity.timeFalling = 1;
                 fallingBlockEntity.setHurtEntities(5.0f, 5);
                 world.setBlockState(pos, Blocks.AIR.getDefaultState());
-                world.spawnEntity(fallingBlockEntity);
             }
         }
     }
